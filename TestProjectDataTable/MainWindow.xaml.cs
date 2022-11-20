@@ -5,23 +5,22 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
+using TestProjectDataTable.ViewModels;
 
 namespace TestProjectDataTable
 {
     public partial class MainWindow : Window
     {
-        ObservableCollection<DataGridRow> _data = new ObservableCollection<DataGridRow>();
+        private ObservableCollection<DataGridRow> _data = new ObservableCollection<DataGridRow>();
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new MainVindowViewModel();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //DataGrid.AutoGenerateColumns = true;
@@ -104,13 +103,12 @@ namespace TestProjectDataTable
 
                     rowIndex++;
                 }
-                workbook.Write(fs,false);
+                workbook.Write(fs, false);
             }
         }
 
         private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
         }
     }
 }

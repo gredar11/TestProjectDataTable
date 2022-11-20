@@ -22,12 +22,14 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Width="50" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Command="{Binding AddDataFromExcelCommand}">Загрузить файл</Button>
-        <Button Width="50" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Grid.Column="1" Click="Button_Click_1">Save</Button>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="auto" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Command="{Binding AddDataFromExcelCommand}">Load file</Button>
+            <Button Width="auto" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Click="Button_Click_1">Save</Button>
+        </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGrid" Grid.RowSpan="2"
                   Grid.ColumnSpan="1" SelectionMode="Single" ItemsSource="{Binding SelectedData}"
-                  CanUserAddRows="False"                           
-                  AutoGenerateColumns="False"                      
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
                   EnableColumnVirtualization="False">
             <inter:Interaction.Triggers>
                 <inter:EventTrigger EventName="SelectionChanged">
@@ -82,16 +84,15 @@
 
         <userViews:TechnicalObjectListView Grid.Column="1" Grid.Row="1" DataContext="{Binding SelectedRow}"></userViews:TechnicalObjectListView>
         <Rectangle Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"
-            Stroke="Black" 
+            Stroke="Black"
             StrokeThickness="4"
-            Width="{Binding SelectedRow.Width, UpdateSourceTrigger=PropertyChanged, FallbackValue=0.0, Converter={StaticResource RectSizeConverter}}" 
+            Width="{Binding SelectedRow.Width, UpdateSourceTrigger=PropertyChanged, FallbackValue=0.0, Converter={StaticResource RectSizeConverter}}"
             Height="{Binding SelectedRow.Height, UpdateSourceTrigger=PropertyChanged, FallbackValue=0.0, Converter={StaticResource RectSizeConverter}}">
             <!--<Rectangle.Fill>
-                <VisualBrush 
-                    TileMode="Tile" 
-                    Viewport="{Binding tileRect}" 
+                <VisualBrush
+                    TileMode="Tile"
+                    Viewport="{Binding tileRect}"
                     ViewportUnits="Absolute">
-                    
                 </VisualBrush>
             </Rectangle.Fill>-->
         </Rectangle>

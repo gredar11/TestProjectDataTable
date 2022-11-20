@@ -24,11 +24,12 @@ namespace TestProjectDataTable
                 return Type.GetType(viewModelName);
             });
         }
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
             // register other needed services here
         }
+
         protected override Window CreateShell()
         {
             var window = Container.Resolve<MainWindow>();

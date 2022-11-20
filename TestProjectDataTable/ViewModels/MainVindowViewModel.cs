@@ -2,45 +2,40 @@
 using NPOI.XSSF.UserModel;
 using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Controls;
-using TestProjectDataTable.DataViews;
 
 namespace TestProjectDataTable.ViewModels
 {
     public class MainVindowViewModel : BindableBase
     {
-        public ObservableCollection<TechnicalObjectViewModel> SelectedData { get; set; } = new ObservableCollection<TechnicalObjectViewModel>();
+        private TechnicalObjectViewModel _selectedRow;
+        private DelegateCommand addDataFromExcelCommand;
         private DelegateCommand<object> delegateCommand;
+        public MainVindowViewModel()
+        {
+        }
+
+        public DelegateCommand AddDataFromExcelCommand =>
+            addDataFromExcelCommand ?? (addDataFromExcelCommand = new DelegateCommand(ExecuteAddDataFromExcelCommand));
+
         public DelegateCommand<object> ChangeSelectedRow =>
             delegateCommand ?? (delegateCommand = new DelegateCommand<object>(ExecuteChangeSelectedRow));
 
-        private TechnicalObjectViewModel _selectedRow;
+        public ObservableCollection<TechnicalObjectViewModel> SelectedData { get; set; } = new ObservableCollection<TechnicalObjectViewModel>();
         public TechnicalObjectViewModel SelectedRow
         {
             get { return _selectedRow; }
             set { SetProperty(ref _selectedRow, value); }
         }
 
-        void ExecuteChangeSelectedRow(object args)
-        {
-
-            SelectedRow = (TechnicalObjectViewModel)args;
-        }
-        private DelegateCommand addDataFromExcelCommand;
-        public DelegateCommand AddDataFromExcelCommand =>
-            addDataFromExcelCommand ?? (addDataFromExcelCommand = new DelegateCommand(ExecuteAddDataFromExcelCommand));
-
-        void ExecuteAddDataFromExcelCommand()
+        private void ExecuteAddDataFromExcelCommand()
         {
             SelectedData.Clear();
-            DataSet dataSet = new DataSet();
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             string file = @"E:\Тест C#\test\Objects.xlsx";
@@ -74,9 +69,9 @@ namespace TestProjectDataTable.ViewModels
             }
         }
 
-        public MainVindowViewModel()
+        private void ExecuteChangeSelectedRow(object args)
         {
-
+            SelectedRow = (TechnicalObjectViewModel)args;
         }
     }
 }
