@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="TestProjectDataTable.DataViews.TechnicalObjectListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="False">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Grid.Column="0">
+            <TextBlock>Name</TextBlock>
+            <TextBlock>Distance</TextBlock>
+            <TextBlock>Angle</TextBlock>
+            <TextBlock>Width</TextBlock>
+            <TextBlock>Height</TextBlock>
+            <TextBlock>IsDefect</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Grid.Column="1">
+            <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding Distance, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding Angle, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding Height, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock Text="{Binding IsDefect, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

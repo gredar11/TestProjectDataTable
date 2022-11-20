@@ -3,11 +3,11 @@
 namespace TestProjectDataTable.DataViews
 {
     /// <summary>
-    /// Interaction logic for ObjectData
+    /// Interaction logic for TechnicalObjectListView
     /// </summary>
-    public partial class ObjectData : UserControl
+    public partial class TechnicalObjectListView : UserControl
     {
-        public ObjectData()
+        public TechnicalObjectListView()
         {
             InitializeComponent();
         }
