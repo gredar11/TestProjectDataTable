@@ -1,5 +1,7 @@
 ﻿using Prism.Mvvm;
 using System;
+using System.Globalization;
+using System.Linq;
 
 namespace TestProjectDataTable.ViewModels
 {
@@ -56,10 +58,15 @@ namespace TestProjectDataTable.ViewModels
         public TechnicalObjectViewModel(string[] args)
         {
             Name = args[0];
-            Distance = double.Parse(args[1]);
-            Angle = double.Parse(args[2]);
-            Width = double.Parse(args[3]);
-            Height = double.Parse(args[4]);
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            if (args.Skip(1).Take(4).Any(x => x.Contains(',')))
+                nfi.NumberDecimalSeparator = ",";
+            else
+                nfi.NumberDecimalSeparator = ".";
+            Distance = double.Parse(args[1], nfi);
+            Angle = double.Parse(args[2], nfi);
+            Width = double.Parse(args[3], nfi);
+            Height = double.Parse(args[4], nfi);
             IsDefect = ConvertToBool(args[5]);
         }
 

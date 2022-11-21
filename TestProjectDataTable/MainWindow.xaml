@@ -23,8 +23,9 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding LoadedFileName}" Margin='5' VerticalAlignment="Center" ></TextBlock>
             <Button Width="auto" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Command="{Binding AddDataFromExcelCommand}">Load file</Button>
-            <Button Width="auto" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Click="Button_Click_1">Save</Button>
+            <Button Width="auto" Height="20" Margin="20 0 0 0" HorizontalAlignment="Left" Command="{Binding SaveObjectsToFile}">Save</Button>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGrid" Grid.RowSpan="2"
                   Grid.ColumnSpan="1" SelectionMode="Single" ItemsSource="{Binding SelectedData}"
